@@ -2,10 +2,10 @@
 #include <string.h>
 #include <assert.h>
 
-// size_t	ft_strlen(const char *str);
-size_t	ft_strlen(const char *str) {
-	return strlen(str);
-}
+size_t	ft_strlen(const char *str);
+// size_t	ft_strlen(const char *str) {
+// 	return strlen(str);
+// }
 
 int main()
 {
@@ -16,12 +16,13 @@ int main()
 	printf("=============== ft_strlen() ===============\n");
 	test_str = "Hello";
 	printf("assert(strlen(%s) == ft_strlen(%s))\n", test_str, test_str);
+	printf("ft_strlen(test_str) : %ld\n",  ft_strlen(test_str));
 	assert(strlen(test_str) == ft_strlen(test_str));
 	test_str = "";
 	printf("assert(strlen(%s) == ft_strlen(%s))\n", test_str, test_str);
 	assert(strlen(test_str) == ft_strlen(test_str));
-	test_str = NULL;
-	printf("assert(strlen(%s) == ft_strlen(%s))\n", test_str, test_str);
+	// test_str = NULL;
+	// printf("assert(strlen(%s) == ft_strlen(%s))\n", test_str, test_str);
 	// assert(strlen(test_str) == ft_strlen(test_str));
 	test_str = "Hello, World\n\n";
 	printf("assert(strlen(%s) == ft_strlen(%s))\n", test_str, test_str);
