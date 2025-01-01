@@ -1,3 +1,4 @@
+
 NAME = libasm.a
 NASM = nasm
 AR = ar
@@ -8,17 +9,17 @@ RM = rm -f
 NASM_FLAGS = -f elf64
 AR_FLAGS = rcs
 
+
 # source files
-SRCS_DIR=srcs
-SRCS = $(addprefix: $(SRCS_DIR), hello.s)
+SRCS_DIR = srcs
+SRCS = $(addprefix $(SRCS_DIR)/, hello.s)
 OBJS = $(SRCS:.s=.o)
-
-
-$(NAME): $(OBJS)
-	$(AR) $(AR_FLAGS) $@ $^
 
 %.o: %.s
 	$(NASM) $(NASM_FLAGS) -o $@ $<
+
+$(NAME): $(OBJS)
+	$(AR) $(AR_FLAGS) $@ $^
 
 all: $(NAME)
 
