@@ -9,7 +9,8 @@ NASM_FLAGS = -f elf64
 AR_FLAGS = rcs
 
 # source files
-SRCS = hello.s
+SRCS_DIR=srcs
+SRCS = $(addprefix: $(SRCS_DIR), hello.s)
 OBJS = $(SRCS:.s=.o)
 
 

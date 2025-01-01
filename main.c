@@ -2,7 +2,10 @@
 #include <string.h>
 #include <assert.h>
 
-extern void _start(const char *message);
+
+//extern void _start(const char *message);
+extern void start();
+
 
 // size_t	ft_strlen(const char *str);
 // size_t	ft_strlen(const char *str) {
@@ -13,10 +16,11 @@ int main()
 {
 	/** Mandatory
 	 */
-	char *test_str = NULL; 
+
+	// _start("Test my assmbly");
+	start();
 	/**
 	 * 
-	 
 	printf("=============== ft_strlen() ===============\n");
 	test_str = "Hello";
 	printf("assert(strlen(%s) == ft_strlen(%s))\n", test_str, test_str);

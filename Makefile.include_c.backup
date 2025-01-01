@@ -1,0 +1,40 @@
+NAME = my_program
+LIB_NAME = libasm.a
+NASM = nasm
+CC = gcc
+AR = ar
+RM = rm -f
+
+# Flags
+NASM_FLAGS = -f elf64
+AR_FLAGS = rcs
+CFLAGS = -Wall -Wextra -Werror
+
+# Source files
+SRCS_DIR = srcs
+SRCS = $(addprefix $(SRCS_DIR)/, hello.s)
+OBJS = $(SRCS:.s=.o)
+MAIN = main.c
+
+# Build rules
+all: $(NAME)
+
+$(LIB_NAME): $(OBJS)
+	$(AR) $(AR_FLAGS) $@ $^
+
+$(NAME): $(LIB_NAME) $(MAIN)
+	$(CC) $(CFLAGS) -o $@ $(MAIN) -L. -lasm
+
+%.o: %.s
+	$(NASM) $(NASM_FLAGS) -o $@ $<
+
+clean:
+	$(RM) $(OBJS)
+
+fclean: clean
+	$(RM) $(LIB_NAME) $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
+
