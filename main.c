@@ -2,7 +2,9 @@
 #include <string.h>
 #include <assert.h>
 
-size_t	ft_strlen(const char *str);
+extern void _start(const char *message);
+
+// size_t	ft_strlen(const char *str);
 // size_t	ft_strlen(const char *str) {
 // 	return strlen(str);
 // }
@@ -12,7 +14,9 @@ int main()
 	/** Mandatory
 	 */
 	char *test_str = NULL; 
-
+	/**
+	 * 
+	 
 	printf("=============== ft_strlen() ===============\n");
 	test_str = "Hello";
 	printf("assert(strlen(%s) == ft_strlen(%s))\n", test_str, test_str);
@@ -32,7 +36,9 @@ int main()
 	printf("assert(strlen(%s) == ft_strlen(%s))\n", test_str, test_str);
 	assert(strlen(test_str) == ft_strlen(test_str));
 	printf("\n\n");
+	*/
 
+	// printf();
 	// printf("=============== 1. ft_strlen() ===============\n");
 	// // ft_strlen("42\0");
 
