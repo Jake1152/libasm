@@ -4,10 +4,10 @@
 
 
 //extern void _start(const char *message);
-extern void start();
+//extern void start();
 
 
-// size_t	ft_strlen(const char *str);
+size_t	ft_strlen(const char *str);
 // size_t	ft_strlen(const char *str) {
 // 	return strlen(str);
 // }
@@ -18,13 +18,14 @@ int main()
 	 */
 
 	// _start("Test my assmbly");
-	start();
-	/**
-	 * 
+	// start();
 	printf("=============== ft_strlen() ===============\n");
-	test_str = "Hello";
+	char *test_str = "Hello";
 	printf("assert(strlen(%s) == ft_strlen(%s))\n", test_str, test_str);
+	printf("strlen(test_str) : %ld\n",  strlen(test_str));
 	printf("ft_strlen(test_str) : %ld\n",  ft_strlen(test_str));
+
+	/**
 	assert(strlen(test_str) == ft_strlen(test_str));
 	test_str = "";
 	printf("assert(strlen(%s) == ft_strlen(%s))\n", test_str, test_str);
