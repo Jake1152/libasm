@@ -12,6 +12,47 @@ size_t	ft_strlen(const char *str);
 // 	return strlen(str);
 // }
 
+void test_strlen()
+{
+	char *uninitialized_pointer;
+    const char *valid_string = "Hello, World!";
+    const char *empty_string = "";
+    const char *null_pointer = NULL;
+    
+    // Uninitialized pointer (undefined behavior warning)
+
+    // Valid string
+    printf("Testing with a valid string:\n");
+	printf("address: %p\n", valid_string);
+    printf("Length of std: %zu\n", strlen(valid_string));
+	printf("Length of ft : %zu\n", ft_strlen(valid_string));
+	printf("assert(strlen(%s) == ft_strlen(%s))\n", valid_string, valid_string);
+
+    // Empty string
+    printf("\nTesting with an empty string:\n");
+	printf("address: %p\n", empty_string);
+    printf("Length of std: %zu\n", strlen(empty_string));
+	printf("Length of ft : %zu\n", ft_strlen(empty_string));
+	printf("assert(strlen(%s) == ft_strlen(%s))\n", empty_string, empty_string);
+
+    // Uninitialized pointer (unsafe, demo purposes only)
+    // Uncommenting the following line is risky and may cause the program to crash.
+    printf("\nTesting with a uninitialized_pointer pointer:\n");
+    printf("address: %p\n", uninitialized_pointer);
+    printf("Length of std: %zu\n", strlen(uninitialized_pointer));
+	printf("Length of ft : %zu\n", ft_strlen(uninitialized_pointer));
+	printf("assert(strlen(%s)\n", uninitialized_pointer);
+	printf("assert(ft_strlen(%s)\n", uninitialized_pointer);
+	// printf("assert(strlen(%s) == ft_strlen(%s))\n", uninitialized_pointer, uninitialized_pointer);
+
+    // NULL pointer (causes undefined behavior, so wrapped with a condition)
+    printf("\nTesting with a NULL pointer:\n");
+	printf("address: %p\n", null_pointer);
+	printf("Length of ft : %zu\n", ft_strlen(null_pointer));
+    // printf("Length of std: %zu\n", strlen(null_pointer));
+	// printf("assert(strlen(%s) == ft_strlen(%s))\n", null_pointer, null_pointer);
+}
+
 int main()
 {
 	/** Mandatory
@@ -20,10 +61,7 @@ int main()
 	// _start("Test my assmbly");
 	// start();
 	printf("=============== ft_strlen() ===============\n");
-	char *test_str = "Hello";
-	printf("assert(strlen(%s) == ft_strlen(%s))\n", test_str, test_str);
-	printf("strlen(test_str) : %ld\n",  strlen(test_str));
-	printf("ft_strlen(test_str) : %ld\n",  ft_strlen(test_str));
+	test_strlen();
 
 	/**
 	assert(strlen(test_str) == ft_strlen(test_str));
