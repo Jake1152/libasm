@@ -12,7 +12,7 @@ AR_FLAGS = rcs
 
 # source files
 SRCS_DIR = srcs
-SRCS = $(addprefix $(SRCS_DIR)/, hello.s)
+SRCS = $(addprefix $(SRCS_DIR)/, ft_strlen.s)
 OBJS = $(SRCS:.s=.o)
 
 %.o: %.s
