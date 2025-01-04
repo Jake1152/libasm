@@ -1,4 +1,3 @@
-
 NAME = libasm.a
 NASM = nasm
 AR = ar
