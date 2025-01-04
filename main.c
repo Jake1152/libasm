@@ -1,16 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
-
-
-//extern void _start(const char *message);
-//extern void start();
-
+#include <unistd.h>
+#include <errno.h>
 
 size_t	ft_strlen(const char *str);
-// size_t	ft_strlen(const char *str) {
-// 	return strlen(str);
-// }
+ssize_t ft_read(int fd, void *buf, size_t count);
+// TO KNOW: __errno_location
+// size_t	ft_strlen(const char *str);
 
 void test_strlen()
 {
@@ -53,6 +50,32 @@ void test_strlen()
 	// printf("assert(strlen(%s) == ft_strlen(%s))\n", null_pointer, null_pointer);
 }
 
+// ssize_t read(int fd, void *buf, size_t count);
+void test_read()
+{
+	int 	fd;
+	// char	buf[] = "sdfjdsklfjlfdgjdsflkdjgf";
+	void	*buf;
+	//  char	buf[100];
+	size_t	count;
+    // Uninitialized pointer (undefined behavior warning)
+	ssize_t read_result;
+
+	fd = 1;
+	count = 100;
+	read_result = read(fd, buf, count);
+	printf("read_result : %ld,\t%s\n", read_result, (char *)buf);
+
+	read_result = ft_read(fd, buf, count);
+	printf("read_result : %ld,\t%s\n", read_result, (char *)buf);
+    // Valid string
+    // printf("Testing with a valid string:\n");
+	// printf("address: %p\n", valid_string);
+    // printf("Length of std: %zu\n", strlen(valid_string));
+	// printf("Length of ft : %zu\n", ft_strlen(valid_string));
+	// printf("assert(strlen(%s) == ft_strlen(%s))\n", valid_string, valid_string);
+}
+
 int main()
 {
 	/** Mandatory
@@ -61,7 +84,10 @@ int main()
 	// _start("Test my assmbly");
 	// start();
 	printf("=============== ft_strlen() ===============\n");
-	test_strlen();
+	// test_strlen();
+
+	printf("=============== ft_read() ===============\n");
+	test_read();
 
 	/**
 	assert(strlen(test_str) == ft_strlen(test_str));

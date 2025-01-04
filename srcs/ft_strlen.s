@@ -2,6 +2,7 @@ section .text
 	global ft_strlen
 
 ft_strlen:
+	; mov rax, 0
 	xor rax, rax
 	jmp loop
 
