@@ -22,10 +22,11 @@ section .text
 ; rax에 있는 값을 errno_location이던져주는 위치에 설정해야함
 handle_error:
 	; errno값을 다른 곳에 저장
+	neg rax							; linux에서 rax값이 음수이므로 errno로 쓸 수 있게 양수로 만듦
 	push rax
 	call __errno_location wrt ..plt ; "wrt ..plt"는 상대주소로 errno_location 호출하기 위함.
-	pop rcx							; rcx 레지스터에 errno값을 저장해둔다
-	mov [rax], rcx					; errno_location에서 errno 값을 저장할 수 있는 주소를 rax에 담아둔다.
+	pop rdx							; rdx 레지스터에 errno값을 저장해둔다
+	mov [rax], rdx					; errno_location에서 errno 값을 저장할 수 있는 주소를 rax에 담아둔다.
 	mov rax, -1
 	ret
 

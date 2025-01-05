@@ -202,6 +202,7 @@ int main() {
 		check_ft_strcmp("apple", "Apple", "대문자 비교");
 		//check_ft_strcmp(NULL, "Apple", "널 포인터");
 	}
+	 */
 
 	// ft_read
 	{
@@ -266,7 +267,6 @@ int main() {
 		// 	10, "표준 입력에서 읽기"
 		// );
 	}
-	 */
 
 	// ft_write
 	{
@@ -316,4 +316,3 @@ int main() {
 
 	return 0;
 }
-
