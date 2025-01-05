@@ -11,7 +11,7 @@ AR_FLAGS = rcs
 
 # source files
 SRCS_DIR = srcs
-SRCS = $(addprefix $(SRCS_DIR)/, ft_strlen.s ft_read.s)
+SRCS = $(addprefix $(SRCS_DIR)/, ft_strlen.s ft_read.s ft_write.s)
 OBJS = $(SRCS:.s=.o)
 MAIN = main.c
 

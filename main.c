@@ -5,10 +5,15 @@
 #include <errno.h>
 
 size_t	ft_strlen(const char *str);
-ssize_t ft_read(int fd, void *buf, size_t count);
+ssize_t	ft_read(int fd, void *buf, size_t count);
+ssize_t	ft_write(int fd, void *buf, size_t count);
+// char 	*ft_strcpy(char *dest, const char *src);
+
+// char 	*strcpy(char *dest, const char *src);
+
+
 // TO KNOW: __errno_location
 // size_t	ft_strlen(const char *str);
-
 void test_strlen()
 {
 	char *uninitialized_pointer;
@@ -68,12 +73,24 @@ void test_read()
 
 	read_result = ft_read(fd, buf, count);
 	printf("read_result : %ld,\t%s\n", read_result, (char *)buf);
-    // Valid string
-    // printf("Testing with a valid string:\n");
-	// printf("address: %p\n", valid_string);
-    // printf("Length of std: %zu\n", strlen(valid_string));
-	// printf("Length of ft : %zu\n", ft_strlen(valid_string));
-	// printf("assert(strlen(%s) == ft_strlen(%s))\n", valid_string, valid_string);
+}
+
+// ssize_t write(int fd, const void *buf, size_t count);
+void test_write()
+{
+	int 	fd;
+	char	buf[] = "Hello world this is assembly";
+	size_t	count;
+    // Uninitialized pointer (undefined behavior warning)
+	ssize_t write_result;
+
+	fd = 1;
+	count = strlen(buf);
+	write_result = write(fd, buf, count);
+	printf("write_result : %ld\n", write_result);
+
+	write_result = ft_write(fd, buf, count);
+	printf("write_result : %ld\n", write_result);
 }
 
 int main()
@@ -83,12 +100,14 @@ int main()
 
 	// _start("Test my assmbly");
 	// start();
+	printf("=============== ft_strlen() ===============\n");
+	// test_strlen();
 
 	printf("=============== ft_read() ===============\n");
 	test_read();
 
-	// printf("=============== ft_strlen() ===============\n");
-	// test_strlen();
+	printf("=============== ft_write() ===============\n");
+	test_write();
 	/**
 	assert(strlen(test_str) == ft_strlen(test_str));
 	test_str = "";
@@ -137,3 +156,4 @@ int main()
 	*/
 	return 0;
 }
+
