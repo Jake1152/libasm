@@ -93,10 +93,10 @@ void check_ft_write(int fildes, const void *buf, size_t nbyte, const char *descr
 	int errno1 = errno;
 	errno = 0;
 
-	assert(res1 == res2);
-	assert(errno1 == errno2);
 	printf("ft_write	=> return: %ld, errno: %d\n", res1, errno);
 	printf("write		=> return: %ld, errno: %d\n", res2, errno);
+	assert(res1 == res2);
+	assert(errno1 == errno2);
 	
 	return ;
 }
@@ -112,18 +112,19 @@ void check_ft_read(int fildes1, int fildes2, void *buf1, void *buf2, size_t nbyt
 	ssize_t res1 = ft_read(fildes1, buf1, nbyte - 1);
 	int errno1 = errno;
 
-	assert(res1 == res2);
-	assert(errno1 == errno2);
 	if (res1 > 0) {
 		printf("%s\n", (char *)buf1);
 		printf("%s\n", (char *)buf2);
 	}
-	printf("ft_read		=> return: %ld, errno: %d\n", res1, errno);
-	printf("read		=> return: %ld, errno: %d\n", res2, errno);
+	printf("ft_read		=> return: %ld, errno: %d\n", res1, errno1);
+	printf("read		=> return: %ld, errno: %d\n", res2, errno2);
 
 	free(buf1);
 	free(buf2);
 	
+	assert(res1 == res2);
+	assert(errno1 == errno2);
+
 	return ;
 }
 
@@ -201,7 +202,6 @@ int main() {
 		check_ft_strcmp("apple", "Apple", "대문자 비교");
 		//check_ft_strcmp(NULL, "Apple", "널 포인터");
 	}
-	 */
 
 	// ft_read
 	{
@@ -266,6 +266,7 @@ int main() {
 		// 	10, "표준 입력에서 읽기"
 		// );
 	}
+	 */
 
 	// ft_write
 	{
@@ -315,3 +316,4 @@ int main() {
 
 	return 0;
 }
+

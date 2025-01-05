@@ -27,6 +27,7 @@ handle_error:
 	pop rcx							; rcx 레지스터에 errno값을 저장해둔다
 	mov [rax], rcx					; errno_location에서 errno 값을 저장할 수 있는 주소를 rax에 담아둔다.
 	mov rax, -1
+	ret
 
 ; read syscall에서 쓰는 파라미터 rdi, rsi, rdx
 ft_read:
