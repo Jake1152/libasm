@@ -83,12 +83,12 @@ int main()
 
 	// _start("Test my assmbly");
 	// start();
-	printf("=============== ft_strlen() ===============\n");
-	// test_strlen();
 
 	printf("=============== ft_read() ===============\n");
 	test_read();
 
+	// printf("=============== ft_strlen() ===============\n");
+	// test_strlen();
 	/**
 	assert(strlen(test_str) == ft_strlen(test_str));
 	test_str = "";
