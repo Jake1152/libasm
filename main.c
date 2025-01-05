@@ -108,52 +108,8 @@ int main()
 
 	printf("=============== ft_write() ===============\n");
 	test_write();
-	/**
-	assert(strlen(test_str) == ft_strlen(test_str));
-	test_str = "";
-	printf("assert(strlen(%s) == ft_strlen(%s))\n", test_str, test_str);
-	assert(strlen(test_str) == ft_strlen(test_str));
-	// test_str = NULL;
-	// printf("assert(strlen(%s) == ft_strlen(%s))\n", test_str, test_str);
-	// assert(strlen(test_str) == ft_strlen(test_str));
-	test_str = "Hello, World\n\n";
-	printf("assert(strlen(%s) == ft_strlen(%s))\n", test_str, test_str);
-	assert(strlen(test_str) == ft_strlen(test_str));
-
-	test_str = "Hello, Wo\0rld\0";
-	printf("assert(strlen(%s) == ft_strlen(%s))\n", test_str, test_str);
-	assert(strlen(test_str) == ft_strlen(test_str));
-	printf("\n\n");
-	*/
-
-	// printf();
-	// printf("=============== 1. ft_strlen() ===============\n");
-	// // ft_strlen("42\0");
-
-	// printf("\n\n");
-	
-	// printf("=============== 2. ft_strlen() ===============\n");
-
-
-	// printf("\n\n");
-	
-	// printf("=============== 3. ft_strlen() ===============\n");
-
-	
-	// printf("\n\n");
-	
-	// printf("=============== 4. ft_strlen() ===============\n");
-
-
-	// printf("\n\n");
-	
-	// printf("=============== 5. ft_strlen() ===============\n");
-	// printf("\n\n");
-	
-	// printf("=============== 6. ft_strlen() ===============\n");
 
 	/** Bonus
 	*/
 	return 0;
 }
-

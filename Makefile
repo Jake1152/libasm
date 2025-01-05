@@ -13,7 +13,7 @@ AR_FLAGS = rcs
 SRCS_DIR = srcs
 SRCS = $(addprefix $(SRCS_DIR)/, ft_strlen.s ft_read.s ft_write.s)
 OBJS = $(SRCS:.s=.o)
-MAIN = main.c
+MAIN = main_other.c
 
 all: $(NAME)
 
