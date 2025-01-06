@@ -4,7 +4,7 @@ section .text
 
 ;char *strdup(const char *s);
 ; Mac, Linux
-;	rsi, rdi, rdx, rcx, r8, r9
+;	rdi, rsi, rdx, rcx, r8, r9
 
 ; # 고려사항 
 ; 0. 정상 리턴 케이스
@@ -13,7 +13,7 @@ section .text
 ; ref: https://die4taoam.tistory.com/37
 ; ## calling_convention saved register
 ; ### caller
-; rax, rcx, rdx, rsi, rdi, r8, r9, r10, r11
+; rax, rcx, rdx, rdi, rsi, r8, r9, r10, r11
 
 ; ### callee
 ; rbx, rbp, r12, r13, r14, r15

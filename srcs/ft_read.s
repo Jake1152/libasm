@@ -4,7 +4,7 @@ section .text
 
 ;ssize_t ft_read(int fd, void *buf, size_t count);
 ; Mac, Linux
-;	rsi, rdi, rdx, rcx, r8, r9
+;	rdi, rsi, rdx, rcx, r8, r9
 
 ; # 고려사항 
 ; 0. 정상 리턴 케이스
@@ -13,7 +13,7 @@ section .text
 ; ref: https://die4taoam.tistory.com/37
 ; ## calling_convention saved register
 ; ### caller
-; rax, rcx, rdx, rsi, rdi, r8, r9, r10, r11
+; rax, rcx, rdx, rdi, rsi, r8, r9, r10, r11
 
 ; ### callee
 ; rbx, rbp, r12, r13, r14, r15
@@ -25,8 +25,8 @@ handle_error:
 	neg rax							; linux에서 rax값이 음수이므로 errno로 쓸 수 있게 양수로 만듦
 	push rax
 	call __errno_location wrt ..plt ; "wrt ..plt"는 상대주소로 errno_location 호출하기 위함.
-	pop rdx							; rdx 레지스터에 errno값을 저장해둔다
-	mov [rax], rdx					; errno_location에서 errno 값을 저장할 수 있는 주소를 rax에 담아둔다.
+	pop rcx							; rcx 레지스터에 errno값을 저장해둔다
+	mov [rax], rcx					; errno_location에서 errno 값을 저장할 수 있는 주소를 rax에 담아둔다.
 	mov rax, -1
 	ret
 

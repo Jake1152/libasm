@@ -4,7 +4,7 @@ section .text
 
 ;char *strcpy(char *dest, const char *src);
 ; Mac, Linux
-;	rsi, rdi, rdx, rcx, r8, r9
+;	rdi, rsi, rdx, rcx, r8, r9
 
 ; # 고려사항 
 ; 0. 정상 리턴 케이스
@@ -13,37 +13,36 @@ section .text
 ; ref: https://die4taoam.tistory.com/37
 ; ## calling_convention saved register
 ; ### caller
-; rax, rcx, rdx, rsi, rdi, r8, r9, r10, r11
+; rax, rcx, rdx, rdi, rsi, r8, r9, r10, r11
 
 ; ### callee
 ; rbx, rbp, r12, r13, r14, r15
 	
-; handle error가 호출되었을 때는, 이미 errno 값이 rax에 저장된 상태
-; rax에 있는 값을 errno_location이던져주는 위치에 설정해야함
-handle_error:
-	; errno값을 다른 곳에 저장
-	neg rax							; linux에서 rax값이 음수이므로 errno로 쓸 수 있게 양수로 만듦
-	push rax
-	call __errno_location wrt ..plt ; "wrt ..plt"는 상대주소로 errno_location 호출하기 위함.
-	pop rdx							; rdx 레지스터에 errno값을 저장해둔다
-	mov [rax], rdx					; errno_location에서 errno 값을 저장할 수 있는 주소를 rax에 담아둔다.
-	mov rax, -1
-	ret
+; 위치 copy char로 옮길지 고려
+copy_and_inc:
+	mov dl, byte [rsi + rax]
+	mov byte [rdi + rax], dl
+	inc rax
+	jmp loop
 
+loop:
+	cmp byte [rsi + rax], 0
+	jne copy_and_inc
+	je done
+
+
+;dest[rax], src[]
 ; char *strcpy(char *dest, const char *src);
 ; src에 있는 문자열을 null이 나올 때까지 읽어서 dest에 복사한다.
 ft_strcpy:
 	mov rax, 0
-	syscall
+	jmp loop
 
-	; # Mac, jc로 carry flag변화를 감지
-	; jc handle_error
-	; # Linux, version
-	cmp rax, 0
-	jl handle_error
+done:
+	mov byte [rdi + rax], 0
+	mov rax, rdi
+	ret 
 
-	ret
-	
 ;char	*ft_strcpy(char *dest, char *src)
 ;{
 ;	int i;
