@@ -41,4 +41,3 @@ ft_read:
 	jl handle_error
 
 	ret
-	

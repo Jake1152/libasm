@@ -13,6 +13,28 @@
 
 ; ### callee
 ; rbx, rbp, r12, r13, r14, r15
+
+;int		ft_strcmp(char *s1, char *s2)
+;{
+;	unsigned char c1;
+;	unsigned char c2;
+;
+;	while (1)
+;	{
+;		c1 = (unsigned char)*s1++;
+;		c2 = (unsigned char)*s2++;
+;		if (c1 != c2)
+;		{
+;			if (c1 < c2)
+;				return (-1);
+;			else
+;				return (1);
+;		}
+;		if (!c1)
+;			break ;
+;	}
+;	return (0);
+;}
 section .text
 	global ft_strcmp
 
@@ -54,25 +76,3 @@ ft_strcmp:
 	xor rcx, rcx
 	xor rax, rax
 	jmp loop
-
-;int		ft_strcmp(char *s1, char *s2)
-;{
-;	unsigned char c1;
-;	unsigned char c2;
-;
-;	while (1)
-;	{
-;		c1 = (unsigned char)*s1++;
-;		c2 = (unsigned char)*s2++;
-;		if (c1 != c2)
-;		{
-;			if (c1 < c2)
-;				return (-1);
-;			else
-;				return (1);
-;		}
-;		if (!c1)
-;			break ;
-;	}
-;	return (0);
-;}
