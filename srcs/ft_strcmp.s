@@ -37,7 +37,6 @@ done:
 	jg positive_ret
 
 is_end:
-	inc rax
 	cmp dl, 0
 	je done
 	jne loop
@@ -45,6 +44,7 @@ is_end:
 loop:
 	mov dl, byte [rdi + rax]
 	mov cl, byte [rsi + rax]
+	inc rax
 	cmp cl, dl
 	je is_end
 	jne done
