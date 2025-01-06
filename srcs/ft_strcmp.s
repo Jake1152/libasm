@@ -1,7 +1,3 @@
-section .text
-	global ft_strcmp
-	extern __errno_location
-
 ;int strcmp(const char *s1, const char *s2);
 ; Mac, Linux
 ;	rdi, rsi, rdx, rcx, r8, r9
@@ -17,6 +13,8 @@ section .text
 
 ; ### callee
 ; rbx, rbp, r12, r13, r14, r15
+section .text
+	global ft_strcmp
 
 positive_ret:
 	mov rax, 1

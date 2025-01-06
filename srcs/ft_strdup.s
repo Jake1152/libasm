@@ -1,7 +1,3 @@
-section .text
-	global ft_strdup
-	extern __errno_location
-
 ;char *strdup(const char *s);
 ; Mac, Linux
 ;	rdi, rsi, rdx, rcx, r8, r9
@@ -17,6 +13,9 @@ section .text
 
 ; ### callee
 ; rbx, rbp, r12, r13, r14, r15
+section .text
+	global ft_strdup
+	extern __errno_location
 	
 ; handle error가 호출되었을 때는, 이미 errno 값이 rax에 저장된 상태
 ; rax에 있는 값을 errno_location이던져주는 위치에 설정해야함
@@ -32,6 +31,8 @@ handle_error:
 
 ; char *strdup(const char *s);
 ; src에 있는 문자열을 null이 나올 때까지 읽어서 dest에 복사한다.
+; 적정 크기를 주어서 동적할당을 한다.
+; 
 ft_strdup:
 	mov rax, 0
 	syscall

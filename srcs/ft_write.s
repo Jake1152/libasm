@@ -1,7 +1,3 @@
-section .text
-	global ft_write
-	extern __errno_location
-
 ;ssize_t ft_write(int fd, void *buf, size_t count);
 ; Mac, Linux
 ;	rdi, rsi, rdx, rcx, r8, r9
@@ -17,6 +13,9 @@ section .text
 
 ; ### callee
 ; rbx, rbp, r12, r13, r14, r15
+section .text
+	global ft_write
+	extern __errno_location
 
 ; handle error가 호출되었을 때는, 이미 errno 값이 rax에 저장된 상태
 ; rax에 있는 값을 errno_location이던져주는 위치에 설정해야함

@@ -1,7 +1,3 @@
-section .text
-	global ft_strcpy
-	extern __errno_location
-
 ;char *strcpy(char *dest, const char *src);
 ; Mac, Linux
 ;	rdi, rsi, rdx, rcx, r8, r9
@@ -17,6 +13,8 @@ section .text
 
 ; ### callee
 ; rbx, rbp, r12, r13, r14, r15
+section .text
+	global ft_strcpy
 	
 ; 위치 copy char로 옮길지 고려
 copy_and_inc:
