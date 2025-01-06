@@ -36,9 +36,8 @@ ft_strcpy:
 	jmp loop
 
 done:
-	mov byte [rdi + rax], 0
+	mov byte [rdi + rax], 0			; 마지막 위치에 \0 추가
 	mov rax, rdi
-	xor rdx, rdx
 	ret 
 
 ;char	*ft_strcpy(char *dest, char *src)
