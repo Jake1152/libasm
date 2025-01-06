@@ -15,34 +15,27 @@
 ; rbx, rbp, r12, r13, r14, r15
 section .text
 	global ft_strdup
-	extern __errno_location
-	
-; handle error가 호출되었을 때는, 이미 errno 값이 rax에 저장된 상태
-; rax에 있는 값을 errno_location이던져주는 위치에 설정해야함
-handle_error:
-	; errno값을 다른 곳에 저장
-	neg rax							; linux에서 rax값이 음수이므로 errno로 쓸 수 있게 양수로 만듦
-	push rax
-	call __errno_location wrt ..plt ; "wrt ..plt"는 상대주소로 errno_location 호출하기 위함.
-	pop rdx							; rdx 레지스터에 errno값을 저장해둔다
-	mov [rax], rdx					; errno_location에서 errno 값을 저장할 수 있는 주소를 rax에 담아둔다.
-	mov rax, -1
-	ret
+	extern ft_strlen
+	extern ft_strcpy
+	extern malloc
 
 ; char *strdup(const char *s);
 ; src에 있는 문자열을 null이 나올 때까지 읽어서 dest에 복사한다.
 ; 적정 크기를 주어서 동적할당을 한다.
-; 
+; ft_strlen을 통해서 길이를 잰다.
 ft_strdup:
-	mov rax, 0
-	syscall
-
-	; # Mac, jc로 carry flag변화를 감지
-	; jc handle_error
-	; # Linux, version
-	cmp rax, 0
-	jl handle_error
-
+	; calling convention 지켜야함
+	call ft_strlen
+	; rax에 길이가 담김
+	; void *malloc(size_t size);
+	mov rdx, rdi	; 원복을 위해 rdi주소를  복사해둠
+	mov rdi, rax
+	call malloc wrt ..plt
+	; rax에 동적할당된 heap 주소가 담김
+	; dest(rdi), src(rsi)
+	mov rdi, rax
+	mov rsi, rdx
+	call ft_strcpy
 	ret
 	
 ;char	*ft_strdup(const char *s1)

@@ -38,6 +38,7 @@ ft_strcpy:
 done:
 	mov byte [rdi + rax], 0
 	mov rax, rdi
+	xor rdx, rdx
 	ret 
 
 ;char	*ft_strcpy(char *dest, char *src)

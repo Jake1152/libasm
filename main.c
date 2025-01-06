@@ -15,7 +15,7 @@ char	*ft_strcpy(char *dst, const char *src);
 int		ft_strcmp(const char *s1, const char *s2);
 ssize_t ft_write(int fildes, const void *buf, size_t nbyte);
 ssize_t ft_read(int fildes, void *buf, size_t nbyte);
-// char	*ft_strdup(const char *s1);
+char	*ft_strdup(const char *s1);
 
 void check_ft_strlen(const char *str, const char *description) {
 	printf(ANSI_RED "<<< test : %s >>>" ANSI_WHITE "\n", description);
@@ -60,7 +60,6 @@ void check_ft_strcmp(const char *s1, const char *s2, const char *description) {
 	return ;
 }
 
-/**
 void check_ft_strdup(const char *s1, const char *description) {
 	printf(ANSI_RED "<<< test : %s >>>" ANSI_WHITE "\n", description);
 	errno = 0;
@@ -68,17 +67,16 @@ void check_ft_strdup(const char *s1, const char *description) {
 	char *res1 = ft_strdup(s1);
 	char *res2 = strdup(s1);
 
-	assert(ft_strcmp(res1, res2) == 0);
-	assert(res1 != s1);
 	printf("ft_strdup	=> return: %s\n", res1);
 	printf("strdup		=> return: %s\n", res2);
+	assert(ft_strcmp(res1, res2) == 0);
+	assert(res1 != s1);
 
 	free(res1);
 	free(res2);
 
 	return ;
 }
-*/
 
 void check_ft_write(int fildes, const void *buf, size_t nbyte, const char *description) {
 	printf(ANSI_RED "<<< test : %s >>>" ANSI_WHITE "\n", description);
@@ -300,18 +298,18 @@ int main() {
 
 
 	// ft_strdup
-	// {
-	// 	printf("\n");
-	// 	printf(ANSI_GREEN "---------------------------------------------------" ANSI_WHITE "\n");
-	// 	printf(ANSI_GREEN "-------------------- ft_strdup --------------------" ANSI_WHITE "\n");
-	// 	printf(ANSI_GREEN "---------------------------------------------------" ANSI_WHITE "\n");
+	{
+		printf("\n");
+		printf(ANSI_GREEN "---------------------------------------------------" ANSI_WHITE "\n");
+		printf(ANSI_GREEN "-------------------- ft_strdup --------------------" ANSI_WHITE "\n");
+		printf(ANSI_GREEN "---------------------------------------------------" ANSI_WHITE "\n");
 
-	// 	check_ft_strdup("Hello, World!", "기본");
-	// 	check_ft_strdup("", "빈 문자열");
-	// 	check_ft_strdup("A", "단일 문자");
-	// 	check_ft_strdup("This is a very long string to test how the strdup function handles long inputs.", "긴 문자열");
-	// 	// check_ft_strdup(NULL, "널 포인터");
-	// }
+		check_ft_strdup("Hello, World!", "기본");
+		check_ft_strdup("", "빈 문자열");
+		check_ft_strdup("A", "단일 문자");
+		check_ft_strdup("This is a very long string to test how the strdup function handles long inputs.", "긴 문자열");
+		check_ft_strdup(NULL, "널 포인터");
+	}
 
 	// system("leaks test");
 
