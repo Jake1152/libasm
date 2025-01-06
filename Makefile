@@ -14,7 +14,7 @@ SRCS_DIR = srcs
 SRCS = $(addprefix $(SRCS_DIR)/, ft_strlen.s ft_read.s ft_write.s ft_strcpy.s ft_strcmp.s)
 # ft_strdup.s
 OBJS = $(SRCS:.s=.o)
-MAIN = main_other.c
+MAIN = main.c
 
 all: $(NAME)
 

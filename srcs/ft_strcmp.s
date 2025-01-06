@@ -18,13 +18,23 @@ section .text
 ; ### callee
 ; rbx, rbp, r12, r13, r14, r15
 
-done:
-	dec rax
-	xor rdx, rdx
-	mov rdx, qword [rdi + rax]
-	sub rdx, qword [rsi + rax]
-	mov rax, rdx
+positive_ret:
+	mov rax, 1
+	ret 
+
+negative_ret:
+	mov rax, -1
 	ret
+
+equal_ret:
+	mov rax, 0
+	ret
+
+done:
+	cmp dl, cl
+	je equal_ret
+	jl negative_ret
+	jg positive_ret
 
 is_end:
 	inc rax
@@ -33,20 +43,20 @@ is_end:
 	jne loop
 
 loop:
-	mov dl, byte [rsi + rax]
-	cmp byte [rdi + rax], dl
+	mov dl, byte [rdi + rax]
+	mov cl, byte [rsi + rax]
+	cmp cl, dl
 	je is_end
 	jne done
-
 
 ; int	strcmp(char *s1, char *s2);
 ; src에 있는 문자열을 null이 나올 때까지 읽어서 dest에 복사한다.
 ft_strcmp:
 	xor rdx, rdx
-	mov rax, 0
+	xor rcx, rcx
+	xor rax, rax
 	jmp loop
 
-	ret
 ;int		ft_strcmp(char *s1, char *s2)
 ;{
 ;	unsigned char c1;
