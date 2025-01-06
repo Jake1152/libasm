@@ -30,7 +30,6 @@ loop:
 	jne copy_and_inc
 	je done
 
-
 ;dest[rax], src[]
 ; char *strcpy(char *dest, const char *src);
 ; src에 있는 문자열을 null이 나올 때까지 읽어서 dest에 복사한다.

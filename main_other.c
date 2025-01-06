@@ -12,7 +12,7 @@
 
 size_t  ft_strlen(const char *str);
 char	*ft_strcpy(char *dst, const char *src);
-// int		ft_strcmp(const char *s1, const char *s2);
+int		ft_strcmp(const char *s1, const char *s2);
 ssize_t ft_write(int fildes, const void *buf, size_t nbyte);
 ssize_t ft_read(int fildes, void *buf, size_t nbyte);
 // char	*ft_strdup(const char *s1);
@@ -46,7 +46,6 @@ void check_ft_strcpy(const char *src, const char *description) {
 	return ;
 }
 
-/**
 void check_ft_strcmp(const char *s1, const char *s2, const char *description) {
 	printf(ANSI_RED "<<< test : %s >>>" ANSI_WHITE "\n", description);
 	
@@ -61,6 +60,7 @@ void check_ft_strcmp(const char *s1, const char *s2, const char *description) {
 	return ;
 }
 
+/**
 void check_ft_strdup(const char *s1, const char *description) {
 	printf(ANSI_RED "<<< test : %s >>>" ANSI_WHITE "\n", description);
 	errno = 0;
@@ -180,7 +180,6 @@ int main() {
 		// check_ft_strcpy(NULL, "널 포인터");
 	}
 
-	/**
 	// ft_strcmp
 	{
 		printf("\n");
@@ -202,6 +201,8 @@ int main() {
 		check_ft_strcmp("apple", "Apple", "대문자 비교");
 		//check_ft_strcmp(NULL, "Apple", "널 포인터");
 	}
+	/**
+
 	 */
 
 	// ft_read
